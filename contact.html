@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — NameSpinTool</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">NS</div>
+        <div>
+          <div style="font-weight:900">NameSpinTool</div>
+          <div style="font-size:12px;color:var(--muted)">Contact</div>
+        </div>
+      </div>
+      <nav>
+        <a href="./index.html">Tool</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>Contact</h1>
+      <p class="small">
+        For feedback, bugs, or feature requests, email:
+        <a href="mailto:hello@namespintool.com">hello@namespintool.com</a>
+      </p>
+
+      <p class="small">
+        (Optional later) You can replace this with a form once you want it.
+      </p>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> NameSpinTool</div>
+      <div class="small"><a href="./privacy.html">Privacy</a> • <a href="./terms.html">Terms</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
