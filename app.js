@@ -1,3 +1,5 @@
+// NameSpinTool — app.js (safe + robust)
+
 const pools = {
   first: {
     female: {
@@ -21,14 +23,23 @@ const pools = {
   }
 };
 
-const elGender = document.getElementById("gender");
-const elRegion = document.getElementById("region");
-const elFormat = document.getElementById("format");
-const nameOut = document.getElementById("nameOut");
-const metaOut = document.getElementById("metaOut");
-const toast = document.getElementById("toast");
+// Helpers
+const $ = (id) => document.getElementById(id);
+const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-function pick(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+const elGender = $("gender");
+const elRegion = $("region");
+const elFormat = $("format");
+const nameOut = $("nameOut");
+const metaOut = $("metaOut");
+const toast = $("toast");
+
+function showToast(msg){
+  if(!toast) return;
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), 1400);
+}
 
 function getFirstPool(gender, region){
   const g = gender === "any" ? (Math.random() < 0.5 ? "female" : "male") : gender;
@@ -42,6 +53,8 @@ function getLastPool(region){
 }
 
 function spin(){
+  if(!elGender || !elRegion || !elFormat || !nameOut || !metaOut) return;
+
   const gender = elGender.value;
   const region = elRegion.value;
   const format = elFormat.value;
@@ -58,34 +71,63 @@ function spin(){
   metaOut.textContent = `Gender: ${first.g} • Region: ${first.r.toUpperCase()} • Format: ${format}`;
 }
 
-function copy(){
+async function copy(){
+  if(!nameOut) return;
+
   const text = nameOut.textContent.trim();
   if(!text || text === "—") return;
-  navigator.clipboard.writeText(text).then(() => showToast("Copied to clipboard"));
-}
 
-function showToast(msg){
-  toast.textContent = msg;
-  toast.classList.add("show");
-  setTimeout(()=>toast.classList.remove("show"), 1400);
+  // Prefer modern clipboard API
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      showToast("Copied to clipboard");
+      return;
+    }
+  } catch (_) {}
+
+  // Fallback copy method
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    showToast("Copied to clipboard");
+  } catch (e) {
+    showToast("Copy failed");
+  }
 }
 
 function shuffleAll(){
-  const shuffle = (arr) => arr.sort(()=>Math.random()-0.5);
+  const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+
   ["female","male"].forEach(g=>{
     ["us","uk","latam","afr"].forEach(r=>shuffle(pools.first[g][r]));
   });
   ["us","uk","latam","afr"].forEach(r=>shuffle(pools.last[r]));
+
   showToast("Name pool shuffled");
 }
 
-document.getElementById("btnSpin").addEventListener("click", spin);
-document.getElementById("btnAgain").addEventListener("click", spin);
-document.getElementById("btnCopy").addEventListener("click", copy);
-document.getElementById("btnRandomizeList").addEventListener("click", shuffleAll);
+// Wire up buttons safely
+const btnSpin = $("btnSpin");
+const btnAgain = $("btnAgain");
+const btnCopy = $("btnCopy");
+const btnRandomizeList = $("btnRandomizeList");
 
-const yearEl = document.getElementById("year");
+if(btnSpin) btnSpin.addEventListener("click", spin);
+if(btnAgain) btnAgain.addEventListener("click", spin);
+if(btnCopy) btnCopy.addEventListener("click", copy);
+if(btnRandomizeList) btnRandomizeList.addEventListener("click", shuffleAll);
+
+// Footer year
+const yearEl = $("year");
 if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-// delightful first render
+// First render
 spin();
