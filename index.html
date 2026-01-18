@@ -90,6 +90,18 @@
 
         <p class="small" style="margin-top:12px">
           Tip: Add your own names later by editing the small name lists in the code. No account needed.
+          <hr style="border:0;border-top:1px solid rgba(255,255,255,.08);margin:14px 0">
+
+<div class="row" style="align-items:flex-start">
+  <div style="flex:1;min-width:240px">
+    <label for="customNames">Custom names (optional)</label><br/>
+    <textarea id="customNames" rows="5" placeholder="Paste names separated by commas or new lines&#10;Example: Alex Jordan&#10;Taylor Morgan&#10;Chris Lee"></textarea>
+    <div class="small" style="margin-top:6px">
+      If you add custom names, Spin will use these first (and still fall back to built-in names).
+    </div>
+  </div>
+</div>
+
         </p>
       </section>
 
@@ -126,6 +138,6 @@
   <div class="toast" id="toast">Copied!</div>
 
   <!-- JS loads AFTER the DOM -->
-  <script src="./app.js"></script>
+  <script defer src="./app.js"></script>
 </body>
 </html>
