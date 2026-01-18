@@ -74,6 +74,15 @@ h1{font-size:38px;line-height:1.1;margin:16px 0 8px}
   box-shadow:var(--shadow);
 }
 
+.card{
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.45);
+}
+
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 
 .toolbar{
