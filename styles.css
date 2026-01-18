@@ -153,4 +153,15 @@ footer{
   color:var(--muted);
   line-height:1.55;
 }
+textarea{
+  width:100%;
+  background:var(--panel2);
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  outline:none;
+  resize:vertical;
+}
+textarea:focus{border-color:rgba(78,161,255,.6)}
 
