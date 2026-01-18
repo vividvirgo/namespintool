@@ -1,0 +1,2 @@
+# namespintool
+Random name generator
