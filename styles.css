@@ -1,13 +1,13 @@
 :root{
-  --bg:#0e1526;              /* softer than pure navy */
-  --panel:#141f3d;           /* cards stand out more */
-  --panel2:#0f1833;
-  --text:#eef3ff;
-  --muted:#9fb0d6;
+  --bg:#0c1022;
+  --panel:#161d3f;
+  --panel2:#10173a;
+  --text:#f1f5ff;
+  --muted:#a6b4e6;
   --border:rgba(255,255,255,.12);
-  --accent:#5aa9ff;          /* friendlier blue */
-  --accent2:#7cf0ff;
-  --shadow:0 12px 34px rgba(0,0,0,.35);
+  --accent:#7c7cff;          /* subtle purple-blue */
+  --accent2:#6ee7ff;
+  --shadow:0 14px 38px rgba(0,0,0,.4);
   --radius:18px;
 }
 
