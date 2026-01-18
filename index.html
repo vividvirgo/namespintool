@@ -1,83 +1,56 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="./styles.css" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>NameSpinTool — Random Name Generator</title>
   <meta name="description" content="Generate random first and last names instantly. Filter by gender and region. Copy with one click." />
-  <style>
-    :root { --bg:#0b1220; --card:#101a33; --muted:#8ea3c2; --text:#e8f0ff; --accent:#4ea1ff; --accent2:#ffd166; }
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(900px 600px at 20% 0%, #13234a 0%, var(--bg) 55%);color:var(--text)}
-    a{color:inherit} .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
-    header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7cf0ff);display:grid;place-items:center;color:#081126;font-weight:800}
-    nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
-    nav a:hover{color:var(--text)}
-    h1{font-size:38px;line-height:1.1;margin:16px 0 8px}
-    p.sub{color:var(--muted);margin:0 0 18px;max-width:56ch}
-    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-    @media (max-width:860px){.grid{grid-template-columns:1fr}}
-    .card{background:rgba(16,26,51,.85);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    label{font-size:13px;color:var(--muted)}
-    select,input{background:#0c142c;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px 12px;border-radius:12px;outline:none}
-    select:focus,input:focus{border-color:rgba(78,161,255,.6)}
-    button{border:0;border-radius:14px;padding:11px 14px;font-weight:650;cursor:pointer}
-    .btn{background:linear-gradient(135deg,var(--accent),#7cf0ff);color:#081126}
-    .btn2{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.12)}
-    .btn2:hover{background:rgba(255,255,255,.12)}
-    .result{display:grid;place-items:center;padding:22px;border-radius:16px;background:rgba(12,20,44,.7);border:1px dashed rgba(255,255,255,.15);min-height:140px}
-    .name{font-size:34px;font-weight:800;letter-spacing:.2px;text-align:center}
-    .tag{margin-top:8px;font-size:13px;color:var(--muted)}
-    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#0c142c;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px 14px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s}
-    .toast.show{opacity:1}
-    .ad{display:grid;place-items:center;height:90px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:var(--muted);font-size:13px}
-    footer{margin-top:16px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-    .small{font-size:12px;color:var(--muted);line-height:1.35}
-  </style>
+
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-  <script src="./app.js"></script>
+
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
         <div class="logo">NS</div>
         <div>
-          <div style="font-weight:800;letter-spacing:.2px">NameSpinTool</div>
-          <div style="font-size:12px;color:var(--muted)">Random names • fast • free</div>
+          <div class="brand-title">NameSpinTool</div>
+          <div class="brand-sub">Random names • fast • free</div>
         </div>
       </div>
-<nav>
-  <a href="./index.html">Tool</a>
-  <a href="./about.html">About</a>
-  <a href="./contact.html">Contact</a>
-  <a href="./privacy.html">Privacy</a>
-  <a href="./terms.html">Terms</a>
-</nav>
+
+      <nav>
+        <a href="./index.html">Tool</a>
+        <a href="./about.html">About</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
     </header>
 
     <!-- Top ad slot -->
-    <div class="ad" aria-label="ad-slot">Ad Slot (Top Leaderboard)</div>
+    <div class="ad top" aria-label="ad-slot">Ad Slot (Top Leaderboard)</div>
 
     <h1 id="tool">Spin a name in one click.</h1>
     <p class="sub">Perfect for writers, gamers, and parents. Filter by gender and region, then copy instantly.</p>
 
     <div class="grid">
       <section class="card">
-        <div class="row" style="justify-content:space-between;margin-bottom:12px">
+        <div class="row toolbar">
           <div class="row">
             <div>
-              <label for="gender">Gender</label><br/>
+              <label for="gender">Gender</label><br />
               <select id="gender">
                 <option value="any">Any</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
               </select>
             </div>
+
             <div>
-              <label for="region">Region</label><br/>
+              <label for="region">Region</label><br />
               <select id="region">
                 <option value="any">Any</option>
                 <option value="us">US</option>
@@ -86,8 +59,9 @@
                 <option value="afr">Africa</option>
               </select>
             </div>
+
             <div>
-              <label for="format">Format</label><br/>
+              <label for="format">Format</label><br />
               <select id="format">
                 <option value="full">First + Last</option>
                 <option value="first">First only</option>
@@ -95,6 +69,7 @@
               </select>
             </div>
           </div>
+
           <div class="row">
             <button class="btn2" id="btnRandomizeList" title="Shuffle name pools">Shuffle pool</button>
             <button class="btn" id="btnSpin">Spin</button>
@@ -105,7 +80,8 @@
           <div>
             <div class="name" id="nameOut">—</div>
             <div class="tag" id="metaOut">Choose filters and press Spin</div>
-            <div class="row" style="justify-content:center;margin-top:14px">
+
+            <div class="row actions">
               <button class="btn2" id="btnCopy">Copy</button>
               <button class="btn2" id="btnAgain">Spin again</button>
             </div>
@@ -118,29 +94,38 @@
       </section>
 
       <aside class="card">
-        <div class="ad" style="height:250px;margin-bottom:12px">Ad Slot (Inline 300×250)</div>
+        <div class="ad inline">Ad Slot (Inline 300×250)</div>
+
         <h3 style="margin:6px 0 8px">Popular uses</h3>
-        <ul style="margin:0;padding-left:18px;color:var(--muted);line-height:1.55">
+        <ul class="muted-list">
           <li>Character names for stories</li>
           <li>NPC names for campaigns</li>
           <li>Baby name inspiration</li>
           <li>Random aliases for games</li>
         </ul>
-        <div style="margin-top:14px" class="small">
+
+        <div class="small" style="margin-top:14px">
           Want custom categories (fantasy, sci-fi, etc.)? That’s an easy add later.
         </div>
       </aside>
     </div>
 
-    <div class="ad" style="margin-top:16px;height:100px">Ad Slot (Footer)</div>
+    <!-- Footer ad slot -->
+    <div class="ad footer" style="margin-top:16px">Ad Slot (Footer)</div>
 
     <footer>
       <div>© <span id="year"></span> NameSpinTool</div>
-      <div class="small">Terms • Privacy • Disclaimer</div>
+      <div class="small">
+        <a href="./terms.html">Terms</a> •
+        <a href="./privacy.html">Privacy</a> •
+        <a href="./contact.html">Contact</a>
+      </div>
     </footer>
   </div>
 
   <div class="toast" id="toast">Copied!</div>
 
+  <!-- JS loads AFTER the DOM -->
+  <script src="./app.js"></script>
 </body>
 </html>
