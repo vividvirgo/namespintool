@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terms — NameSpinTool</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">NS</div>
+        <div>
+          <div style="font-weight:900">NameSpinTool</div>
+          <div style="font-size:12px;color:var(--muted)">Terms</div>
+        </div>
+      </div>
+      <nav>
+        <a href="./index.html">Tool</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>Terms of Use</h1>
+      <p class="small">Last updated: <span id="d"></span></p>
+
+      <p class="small">
+        By using NameSpinTool, you agree to these terms. This tool is provided “as is” without warranties of any kind.
+      </p>
+
+      <h3>Use of the tool</h3>
+      <ul class="small">
+        <li>You may use the tool for personal or commercial projects.</li>
+        <li>You may not misuse the site (e.g., attempt to disrupt service or scrape excessively).</li>
+      </ul>
+
+      <h3>Disclaimer</h3>
+      <p class="small">
+        Name results are randomly generated and are for inspiration only. We do not guarantee uniqueness or suitability.
+      </p>
+
+      <h3>Limitation of liability</h3>
+      <p class="small">
+        NameSpinTool will not be liable for any damages arising from your use of this site.
+      </p>
+
+      <h3>Contact</h3>
+      <p class="small">
+        Questions? <a href="mailto:hello@namespintool.com">hello@namespintool.com</a>
+      </p>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> NameSpinTool</div>
+      <div class="small"><a href="./privacy.html">Privacy</a> • <a href="./contact.html">Contact</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("d").textContent = new Date().toLocaleDateString();
+  </script>
+</body>
+</html>
