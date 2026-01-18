@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>NameSpinTool — Random Name Generator</title>
-  <meta name="description" content="Generate random first and last names instantly. Filter by gender and region. Copy with one click." />
+  <meta name="description" content="Generate random first and last names instantly. Add your own list, generate variations from a single name, and copy with one click." />
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -34,14 +34,15 @@
     <div class="ad top" aria-label="ad-slot">Ad Slot (Top Leaderboard)</div>
 
     <h1 id="tool">Spin a name in one click.</h1>
-    <p class="sub">Perfect for writers, gamers, and parents. Filter by gender and region, then copy instantly.</p>
+    <p class="sub">Perfect for writers, gamers, and parents. Filter by gender and region, paste your own list, or generate variations from a single name.</p>
 
     <div class="grid">
+      <!-- Main tool -->
       <section class="card">
         <div class="row toolbar">
           <div class="row">
             <div>
-              <label for="gender">Gender</label><br />
+              <label for="gender">Gender</label><br/>
               <select id="gender">
                 <option value="any">Any</option>
                 <option value="female">Female</option>
@@ -50,7 +51,7 @@
             </div>
 
             <div>
-              <label for="region">Region</label><br />
+              <label for="region">Region</label><br/>
               <select id="region">
                 <option value="any">Any</option>
                 <option value="us">US</option>
@@ -61,7 +62,7 @@
             </div>
 
             <div>
-              <label for="format">Format</label><br />
+              <label for="format">Format</label><br/>
               <select id="format">
                 <option value="full">First + Last</option>
                 <option value="first">First only</option>
@@ -71,7 +72,7 @@
           </div>
 
           <div class="row">
-            <button class="btn2" id="btnRandomizeList" title="Shuffle name pools">Shuffle pool</button>
+            <button class="btn2" id="btnRandomizeList" title="Shuffle built-in name pools">Shuffle pool</button>
             <button class="btn" id="btnSpin">Spin</button>
           </div>
         </div>
@@ -88,27 +89,56 @@
           </div>
         </div>
 
-        <p class="small" style="margin-top:12px">
-          Tip: Add your own names later by editing the small name lists in the code. No account needed.
-          <hr style="border:0;border-top:1px solid rgba(255,255,255,.08);margin:14px 0">
+        <hr class="divider"/>
 
-<div class="row" style="align-items:flex-start">
-  <div style="flex:1;min-width:240px">
-    <label for="customNames">Custom names (optional)</label><br/>
-    <textarea id="customNames" rows="5" placeholder="Paste names separated by commas or new lines&#10;Example: Alex Jordan&#10;Taylor Morgan&#10;Chris Lee"></textarea>
-    <div class="small" style="margin-top:6px">
-      If you add custom names, Spin will use these first (and still fall back to built-in names).
-    </div>
-  </div>
-</div>
+        <!-- Custom list + single name variations -->
+        <div class="grid2">
+          <!-- Custom List -->
+          <div>
+            <label for="customNames">Custom names list (optional)</label><br/>
+            <textarea id="customNames" rows="6"
+              placeholder="Paste names separated by commas or new lines
+Example:
+Alex Jordan
+Taylor Morgan
+Chris Lee"></textarea>
 
-        </p>
+            <div class="small helper">
+              If you add names here, <b>Spin</b> will use your list first (and fall back to built-in names if empty).
+            </div>
+          </div>
+
+          <!-- Single Name Variations -->
+          <div>
+            <label for="baseName">Single name → generate variations</label><br/>
+            <input id="baseName" type="text" placeholder="Example: Alex Jordan" />
+
+            <div class="row" style="margin-top:10px">
+              <button class="btn2" id="btnVariations">Generate variations</button>
+              <button class="btn2" id="btnUseVariation" title="Use the selected variation as the result">
+                Use selected
+              </button>
+            </div>
+
+            <div style="margin-top:10px">
+              <label for="variationList">Variations</label><br/>
+              <select id="variationList" class="full">
+                <option value="">— Generate to see options —</option>
+              </select>
+              <div class="small helper">
+                Great for character aliases, gamer tags, pen names, etc.
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
+      <!-- Sidebar -->
       <aside class="card">
         <div class="ad inline">Ad Slot (Inline 300×250)</div>
 
-        <h3 style="margin:6px 0 8px">Popular uses</h3>
+        <h3 class="h3">Popular uses</h3>
         <ul class="muted-list">
           <li>Character names for stories</li>
           <li>NPC names for campaigns</li>
@@ -117,27 +147,22 @@
         </ul>
 
         <div class="small" style="margin-top:14px">
-          Want custom categories (fantasy, sci-fi, etc.)? That’s an easy add later.
+          Want custom categories (fantasy, sci-fi, romance, etc.)? That’s an easy add later.
         </div>
       </aside>
     </div>
 
-    <!-- Footer ad slot -->
-    <div class="ad footer" style="margin-top:16px">Ad Slot (Footer)</div>
+    <div class="ad footer">Ad Slot (Footer)</div>
 
     <footer>
       <div>© <span id="year"></span> NameSpinTool</div>
-      <div class="small">
-        <a href="./terms.html">Terms</a> •
-        <a href="./privacy.html">Privacy</a> •
-        <a href="./contact.html">Contact</a>
-      </div>
+      <div class="small">Terms • Privacy • Disclaimer</div>
     </footer>
   </div>
 
   <div class="toast" id="toast">Copied!</div>
 
-  <!-- JS loads AFTER the DOM -->
+  <!-- IMPORTANT: load JS at the end + defer -->
   <script defer src="./app.js"></script>
 </body>
 </html>
