@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy — NameSpinTool</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">NS</div>
+        <div>
+          <div style="font-weight:900">NameSpinTool</div>
+          <div style="font-size:12px;color:var(--muted)">Privacy Policy</div>
+        </div>
+      </div>
+      <nav>
+        <a href="./index.html">Tool</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h1>Privacy Policy</h1>
+      <p class="small">Last updated: <span id="d"></span></p>
+
+      <p class="small">
+        NameSpinTool is a simple browser-based utility. By default, the tool runs locally on your device.
+      </p>
+
+      <h3>Information we collect</h3>
+      <ul class="small">
+        <li><strong>No account required:</strong> we do not require logins.</li>
+        <li><strong>No form data by default:</strong> name generation happens in your browser.</li>
+        <li><strong>Analytics/ads (optional):</strong> if enabled, third-party providers may collect cookies or device info.</li>
+      </ul>
+
+      <h3>Third-party advertising</h3>
+      <p class="small">
+        If we display ads (e.g., Google AdSense), those providers may use cookies to show relevant ads and measure performance.
+        You can control cookies through your browser settings.
+      </p>
+
+      <h3>Contact</h3>
+      <p class="small">
+        Questions? Email: <a href="mailto:hello@namespintool.com">hello@namespintool.com</a>
+      </p>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> NameSpinTool</div>
+      <div class="small"><a href="./terms.html">Terms</a> • <a href="./contact.html">Contact</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("d").textContent = new Date().toLocaleDateString();
+  </script>
+</body>
+</html>
