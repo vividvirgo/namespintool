@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://namespintool.com/sitemap.xml
